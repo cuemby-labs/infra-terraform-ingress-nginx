@@ -1,4 +1,4 @@
-# Awesome Walrus Template
+# Ingress-NGINX Template
 
 Terraform module which deploys Ingress NGINX on any kubernetes cluster.
 
@@ -25,6 +25,9 @@ Please read our [contributing guide](./docs/CONTRIBUTING.md) if you're intereste
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
+
+Previous Ingress-NGINX install needs the CRDs to be install before, you can use the [Walrus Kubernetes template](https://github.com/cuemby-labs/infra-terraform-kubernetes-manifest) or install them manualy from the [CloudFlare site](https://github.com/cloudflare/origin-ca-issuer/tree/trunk/deploy/crds)
+
 
 | Name | Version |
 |------|---------|

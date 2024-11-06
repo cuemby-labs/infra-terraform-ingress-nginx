@@ -8,9 +8,9 @@ Terraform module which deploys Ingress NGINX on any kubernetes cluster.
 module "ingress_nginx" {
   source              = "./modules/ingress_nginx" # Path to the Ingress NGINX module
 
-  release_name        = var.release_name          # The name of the Helm release.
-  namespace_name      = var.namespace_name        # The namespace where Ingress NGINX will be installed.
-  chart_version       = var.chart_version         # The version of the Ingress NGINX Helm chart to be used.
+  helm_release_name   = "ingress-nginx"           # The name of the Helm release.
+  namespace_name      = "kube-system"             # The namespace where Ingress NGINX will be installed.
+  helm_chart_version  = "4.11.2"                  # The version of the Ingress NGINX Helm chart to be used.
 }
 ```
 

@@ -17,7 +17,22 @@ variable "namespace_name" {
 variable "helm_chart_version" {
   description = "The version of the ingress-nginx Helm chart."
   type        = string
-  default     = "4.11.2"
+  default     = "4.11.3"
+}
+
+variable "resources" {
+  type = map(map(string))
+  default = {
+    limits = {
+      cpu    = "100m"
+      memory = "90Mi"
+    }
+    requests = {
+      cpu    = "100m"
+      memory = "90Mi"
+    }
+  }
+  description = "Resource limits and requests for the Ingress NGINX Helm release."
 }
 
 #

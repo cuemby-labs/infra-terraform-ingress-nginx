@@ -48,7 +48,6 @@ Please read our [contributing guide](./docs/CONTRIBUTING.md) if you're intereste
 | Name | Version |
 |------|---------|
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | >= 1.5.7 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.23.0 |
 | <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.11.0 |
 
 ## Modules

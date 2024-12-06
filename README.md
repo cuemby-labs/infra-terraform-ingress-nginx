@@ -10,7 +10,18 @@ module "ingress_nginx" {
 
   helm_release_name   = "ingress-nginx"           # The name of the Helm release.
   namespace_name      = "kube-system"             # The namespace where Ingress NGINX will be installed.
-  helm_chart_version  = "4.11.2"                  # The version of the Ingress NGINX Helm chart to be used.
+  helm_chart_version  = "4.11.3"                  # The version of the Ingress NGINX Helm chart to be used.
+
+  resources = {
+    limits = {
+      cpu    = "200m"
+      memory = "200Mi"
+    }
+    requests = {
+      cpu    = "100m"
+      memory = "100Mi"
+    }
+  }
 }
 ```
 
@@ -56,7 +67,9 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_namespace_name"></a> [namespace_name](#input_namespace_name) | Namespace where Ingress NGINX will be installed. | string | "kube-system" | no |
 | <a name="input_helm_release_name"></a> [helm_release_name](#input_helm_release_name) | Name for the Ingress NGINX Helm release. | string | "ingress-nginx" | no |
-| <a name="input_helm_chart_version"></a> [helm_chart_version](#input_helm_chart_version) | Version of the Ingress NGINX Helm chart. | string | "4.11.2" | no |
+| <a name="input_helm_chart_version"></a> [helm_chart_version](#input_helm_chart_version) | Version of the Ingress NGINX Helm chart. | string | "4.11.3" | no |
+| <a name="input_resources"></a> [resources](#input_resources) | Resource limits and requests for the helm chart pods. | `map(object(string))` | `"See example"` | no |
+| <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br><br>Examples:<pre>context:<br>  project:<br>    name: string<br>    id: string<br>  environment:<br>    name: string<br>    id: string<br>  resource:<br>    name: string<br>    id: string</pre> | `map(any)` | `{}` | no |
 
 ## Outputs
 

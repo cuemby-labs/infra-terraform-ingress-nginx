@@ -9,10 +9,10 @@ controller:
   podAnnotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "10254"
-    serviceMonitor:
-      enabled: ${service_monitor}
-      additionalLabels:
-            release: prometheus
+  serviceMonitor:
+    enabled: ${service_monitor}
+    additionalLabels:
+          release: prometheus
   allowSnippetAnnotations: true
   config:
     use-forwarded-headers: "true"

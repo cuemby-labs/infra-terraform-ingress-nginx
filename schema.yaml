@@ -38,6 +38,14 @@ components:
           x-walrus-ui:
             group: Basic
             order: 4
+        service_monitor:
+          title: Service Monitor
+          type: boolean
+          description: Enabled Service Monitor in the ingress-nginx Helm chart.
+          default: "true"
+          x-walrus-ui:
+            group: Basic
+            order: 5
         resources:
           title: Resources
           type: object
@@ -58,7 +66,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 5
+            order: 6
         values:
           title: Values
           type: object
@@ -67,7 +75,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 6
+            order: 7
             widget: YamlEditor
       x-walrus-ui:
         groupOrder:

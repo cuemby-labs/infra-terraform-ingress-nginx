@@ -26,6 +26,12 @@ variable "metrics" {
   default     = "true"
 }
 
+variable "service_monitor" {
+  description = "Enabled Service Monitor in the ingress-nginx Helm chart."
+  type        = bool
+  default     = "true"
+}
+
 variable "resources" {
   type = map(map(string))
   default = {

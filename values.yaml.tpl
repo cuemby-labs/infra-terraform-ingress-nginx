@@ -6,6 +6,8 @@ controller:
         annotations:
           prometheus.io/scrape: "true"
           prometheus.io/port: "10254"
+    serviceMonitor:
+      enabled: ${service_monitor}
   allowSnippetAnnotations: true
   config:
     use-forwarded-headers: "true"

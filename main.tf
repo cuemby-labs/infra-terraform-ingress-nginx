@@ -15,7 +15,8 @@ resource "helm_release" "ingress_nginx" {
       limits_memory  = var.resources["limits"]["memory"],
       request_cpu    = var.resources["requests"]["cpu"],
       limits_cpu     = var.resources["limits"]["cpu"]
-    })
+    }),
+    yamlencode(var.values)
   ]
 }
 

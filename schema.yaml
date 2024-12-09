@@ -30,6 +30,14 @@ components:
           x-walrus-ui:
             group: Basic
             order: 3
+        metrics:
+          title: Metrics
+          type: boolean
+          description: Enabled Metrics in the ingress-nginx Helm chart.
+          default: "true"
+          x-walrus-ui:
+            group: Basic
+            order: 4
         resources:
           title: Resources
           type: object
@@ -50,7 +58,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 4
+            order: 5
         values:
           title: Values
           type: object
@@ -59,7 +67,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 5
+            order: 6
             widget: YamlEditor
       x-walrus-ui:
         groupOrder:

@@ -11,6 +11,7 @@ resource "helm_release" "ingress_nginx" {
 
   values = [
     templatefile("${path.module}/values.yaml.tpl", {
+      metrics        = var.metrics,
       request_memory = var.resources["requests"]["memory"],
       limits_memory  = var.resources["limits"]["memory"],
       request_cpu    = var.resources["requests"]["cpu"],

@@ -20,6 +20,12 @@ variable "helm_chart_version" {
   default     = "4.11.3"
 }
 
+variable "metrics" {
+  description = "Enabled Metrics in the ingress-nginx Helm chart."
+  type        = bool
+  default     = "true"
+}
+
 variable "resources" {
   type = map(map(string))
   default = {

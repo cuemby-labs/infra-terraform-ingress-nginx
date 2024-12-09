@@ -1,8 +1,8 @@
 controller:
   metrics:
-    enable: ${metrics}
+    enabled: ${metrics}
     service:
-      enable: ${metrics}
+      enabled: ${metrics}
       service:
         annotations:
           prometheus.io/scrape: "true"

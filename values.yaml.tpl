@@ -1,5 +1,6 @@
 controller:
   metrics:
+    enable: ${metrics}
     service:
       enable: ${metrics}
       service:

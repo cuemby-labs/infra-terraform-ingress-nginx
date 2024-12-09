@@ -35,6 +35,12 @@ variable "resources" {
   description = "Resource limits and requests for the Ingress NGINX Helm release."
 }
 
+variable "values" {
+  description = "Chart values"
+  type        = any
+  default     = {}
+}
+
 #
 # Contextual Fields
 #

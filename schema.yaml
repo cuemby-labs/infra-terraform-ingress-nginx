@@ -51,6 +51,16 @@ components:
             colSpan: 12
             group: Basic
             order: 4
+        values:
+          title: Values
+          type: object
+          description: Chart values
+          default: {}
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 5
+            widget: YamlEditor
       x-walrus-ui:
         groupOrder:
         - Basic

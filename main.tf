@@ -9,24 +9,17 @@ resource "helm_release" "ingress_nginx" {
   chart      = "ingress-nginx"
   version    = var.helm_chart_version
 
-  values = var.set_custom_values ? [yamlencode(var.values)] : []
-
-  set {
-    name  = "controller.resources.requests.cpu"
-    value = var.resources["requests"]["cpu"]
-  }
-  set {
-    name  = "controller.resources.requests.memory"
-    value = var.resources["requests"]["memory"]
-  }
-  set {
-    name  = "controller.resources.limits.cpu"
-    value = var.resources["limits"]["cpu"]
-  }
-  set {
-    name  = "controller.resources.limits.memory"
-    value = var.resources["limits"]["memory"]
-  }
+  values = [
+    templatefile("${path.module}/values.yaml.tpl", {
+      metrics         = var.metrics,
+      service_monitor = var.service_monitor,
+      request_memory  = var.resources["requests"]["memory"],
+      limits_memory   = var.resources["limits"]["memory"],
+      request_cpu     = var.resources["requests"]["cpu"],
+      limits_cpu      = var.resources["limits"]["cpu"]
+    }),
+    yamlencode(var.values)
+  ]
 }
 
 #

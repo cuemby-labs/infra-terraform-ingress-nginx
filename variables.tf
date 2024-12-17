@@ -47,6 +47,12 @@ variable "resources" {
   description = "Resource limits and requests for the Ingress NGINX Helm release."
 }
 
+variable "set_custom_values" {
+  type = bool
+  description = "Set custom values"
+  default = false
+}
+
 variable "values" {
   description = "Chart values"
   type        = any

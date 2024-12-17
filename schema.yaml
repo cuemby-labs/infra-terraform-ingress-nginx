@@ -67,6 +67,14 @@ components:
             colSpan: 12
             group: Basic
             order: 6
+        set_custom_values:
+          title: Set Custom Values
+          type: boolean
+          description: Set custom values
+          default: false
+          x-walrus-ui:
+            group: Basic
+            order: 7
         values:
           title: Values
           type: object
@@ -75,7 +83,7 @@ components:
           x-walrus-ui:
             colSpan: 12
             group: Basic
-            order: 7
+            order: 8
             widget: YamlEditor
       x-walrus-ui:
         groupOrder:

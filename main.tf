@@ -53,6 +53,10 @@ resource "kubernetes_manifest" "service_monitor_ingress_nginx" {
       ]
     }
   }
+
+  lifecycle {
+    ignore_changes = [manifest]
+  }
 }
 
 #

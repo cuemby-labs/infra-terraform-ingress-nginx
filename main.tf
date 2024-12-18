@@ -26,7 +26,18 @@ resource "helm_release" "ingress_nginx" {
 # Service Monitor
 #
 
+data "kubernetes_manifest" "existing_service_monitor" {
+  api_version = "monitoring.coreos.com/v1"
+  kind        = "ServiceMonitor"
+  metadata {
+    name      = "ingress-nginx-controller"
+    namespace = var.namespace_name
+  }
+}
+
 resource "kubernetes_manifest" "service_monitor_ingress_nginx" {
+  count = data.kubernetes_manifest.existing_service_monitor.metadata[0].name != "" ? 0 : 1
+
   manifest = {
     "apiVersion" = "monitoring.coreos.com/v1"
     "kind"       = "ServiceMonitor"

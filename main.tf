@@ -55,7 +55,8 @@ resource "kubernetes_manifest" "service_monitor_ingress_nginx" {
   }
 
   lifecycle {
-    ignore_changes = all
+    ignore_changes  = all
+    prevent_destroy = true
   }
 }
 

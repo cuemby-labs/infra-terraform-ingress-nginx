@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: ingress-nginx-controller
-  namespace: ${var.namespace_name}
+  namespace: ${namespace_name}
   labels:
     release: prometheus
 spec:

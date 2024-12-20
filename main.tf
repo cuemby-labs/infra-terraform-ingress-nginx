@@ -26,38 +26,26 @@ resource "helm_release" "ingress_nginx" {
 # Service Monitor
 #
 
-resource "kubernetes_manifest" "service_monitor_ingress_nginx" {
-  manifest = {
-    "apiVersion" = "monitoring.coreos.com/v1"
-    "kind"       = "ServiceMonitor"
-    "metadata" = {
-      "name"      = "ingress-nginx-controller"
-      "namespace" = var.namespace_name
-      "labels" = {
-        "release" = "prometheus"
-      }
-    }
-    "spec" = {
-      "selector" = {
-        "matchLabels" = {
-          "app.kubernetes.io/name"       = "ingress-nginx"
-          "app.kubernetes.io/component"  = "controller"
-        }
-      }
-      "endpoints" = [
-        {
-          "port"     = "metrics"
-          "interval" = "30s"
-          "path"     = "/metrics"
-        }
-      ]
-    }
+data "template_file" "service_monitor_template" {  
+  template = file("${path.module}/service_monitor.yaml.tpl")
+  vars     = {
+    namespace_name = var.namespace_name
   }
+}
+
+data "kubectl_file_documents" "service_monitor_file" {
+  content = data.template_file.service_monitor_template.rendered
+}
+
+resource "kubectl_manifest" "apply_service_monitor" {
+  for_each  = data.kubectl_file_documents.service_monitor_file.manifests
+  yaml_body = each.value
 
   lifecycle {
-    ignore_changes  = all
-    prevent_destroy = true
+    ignore_changes = [yaml_body]
   }
+
+  depends_on = [data.kubectl_file_documents.service_monitor_file]
 }
 
 #

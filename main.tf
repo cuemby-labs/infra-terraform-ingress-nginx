@@ -27,7 +27,7 @@ resource "helm_release" "ingress_nginx" {
 #
 
 data "template_file" "service_monitor_template" {  
-  template = file("${path.module}/service_monitor.yaml.tpl")
+  template = file("${path.module}/servicemonitor.yaml.tpl")
   vars     = {
     namespace_name = var.namespace_name
   }
